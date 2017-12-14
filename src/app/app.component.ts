@@ -8,8 +8,9 @@ import {Book} from './model/book/book.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  readonly LOCALSTORE_KEY: string = 'savedBooks';
   title = 'Book Store';
-  books: Book[] = [];
+  books: Book[];
   selectedTitle: string;  // model to solve selection
   savedBooks: Book[] = [];
   selectedBook: Book;
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO init savedBooks here from local storage
+    this.savedBooks = JSON.parse(localStorage.getItem(this.LOCALSTORE_KEY)) || [];
   }
 
   isBookSelected(book: Book) {
@@ -49,14 +50,17 @@ export class AppComponent implements OnInit {
 
     if (!contains) {
       this.savedBooks.push(this.selectedBook);
+      localStorage.setItem(this.LOCALSTORE_KEY, JSON.stringify(this.savedBooks));
     }
   }
 
   onSavedBookDeleted(deletedBook: Book): void {
     this.savedBooks = this.savedBooks.filter((book) => book.id !== deletedBook.id);
+    localStorage.setItem(this.LOCALSTORE_KEY, JSON.stringify(this.savedBooks));
   }
 
-  clearSavedBooks(): void {
+  onClearSavedBooks(): void {
     this.savedBooks = [];
+    localStorage.clear();
   }
 }
