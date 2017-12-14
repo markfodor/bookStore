@@ -1,12 +1,56 @@
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-</div>
+<div class="container">
+  <!-- book-list component -->
+  <div class="card mb-3">
+    <div class="card-header text-center">
+      <h1>{{title}}</h1>
+    </div>
 
-<div class="row">
-  <div class="text-center">
-    <p>{{books | json}}</p>
+    <input type="text" class="form-control"
+           placeholder="Search for books... (type at least 3 characters)"
+           [(ngModel)]="selectedTitle" (input)="onSearchChange($event.target.value)">
+
+    <button class="list-group-item text-center list-group-item-action"
+            *ngFor="let book of books"
+            [ngClass]="{'active': isBookSelected(book)}"
+            (click)="onBookSelected(book)">
+      {{ book.volumeInfo.title }}
+    </button>
+  </div>
+
+  <div *ngIf="selectedBook" class="row">
+    <div class="col-md-8">
+      <h3>Title</h3>
+      <h4>{{selectedBook.volumeInfo.title}}</h4>
+
+      <h3>Description</h3>
+      <div *ngIf="selectedBook.volumeInfo.description; then description else nodescription"></div>
+      <ng-template #description><p>{{selectedBook.volumeInfo.description}}</p></ng-template>
+      <ng-template #nodescription><p>There is no description for this book</p></ng-template>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Authors</h3>
+      <p *ngFor="let author of selectedBook.volumeInfo.authors">{{author}}</p>
+
+      <a href="{{selectedBook.volumeInfo.imageLinks.thumbnail}}">
+        <img class="img-responsive" src="{{selectedBook.volumeInfo.imageLinks.thumbnail}}"/>
+      </a>
+
+      <button class="btn btn-info btn-lg" (click)="onBookAddedToCart()">Add to cart</button>
+    </div>
+  </div>
+
+  <div *ngIf="savedBooks.length > 0">
+    <h2>Saved Books</h2>
+    <div *ngFor="let savedBook of savedBooks">
+      <button type="button" class="btn btn-default btn-sm"
+              (click)="onSavedBookDeleted(savedBook)">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+      <button class="btn" (click)="onBookSelected(savedBook)">
+        {{savedBook.volumeInfo.title}}
+      </button>
+    </div>
+    <button class="btn btn-danger btn-lg" (click)="clearSavedBooks()">Delete all</button>
   </div>
 </div>
-
-
-
