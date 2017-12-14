@@ -8,7 +8,7 @@ import {Book} from './model/book/book.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  title = 'Book Store';
   books: Book[] = [];
 
   constructor(private bookService: BookService) {

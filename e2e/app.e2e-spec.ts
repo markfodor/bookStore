@@ -7,8 +7,8 @@ describe('book-store App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it(`should display 'Book Store'`, () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Book Store');
   });
 });
