@@ -6,7 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
+    "test": "ng test --browser ChromeHeadless --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
