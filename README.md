@@ -12,7 +12,6 @@ You can check out a running instance here: [BookStore](https://markfodor.github.
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-It will also use the proxy setup (proxy.conf.json) which will redirect requests to to Google API. 
 
 ## Code scaffolding
 
