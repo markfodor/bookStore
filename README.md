@@ -3,7 +3,7 @@
 This is a demo project which was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 Using this app you can search any book by typing the title. You can also save them to your local store, but note that is will only work on the browser you are using when testing the app. **Your data will not be stored on any third-party server.** 
 
-You can check out a running instance here: [BookStore](https://markfodor.github.io/book_store/) 
+You can check out a running instance here: [BookStore](https://markfodor.github.io/bookStore/) 
 
 ##Used technolgies/tools:
 * As a design framework: [Bootstrap](https://getbootstrap.com/) -> It should be fully response.
