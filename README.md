@@ -5,7 +5,7 @@ Using this app you can search any book by typing the title. You can also save th
 
 You can check out a running instance here: [BookStore](https://markfodor.github.io/bookStore/) 
 
-##Used technolgies/tools:
+## Used technolgies/tools
 * As a design framework: [Bootstrap](https://getbootstrap.com/) -> It should be fully response.
 * As a data provider: [Google Books API](https://developers.google.com/books/docs/v1/getting_started)
 
